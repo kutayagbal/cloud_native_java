@@ -6,3 +6,9 @@ spring:
       server:
         git:
           uri: https://github.com/kutayagbal/config_server_configuration_repo
+          username: kutayagbal@gmail.com
+          password: 19&Magrur
+  security:
+    user:
+      name: kutay
+      password: admin
