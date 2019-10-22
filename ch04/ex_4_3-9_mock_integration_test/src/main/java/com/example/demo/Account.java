@@ -1,24 +1,35 @@
 package com.example.demo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Account {
-	private String accountName;
+
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	private String username;
 	private Long accountNo;
 
-	public Account(String accountName, Long accountNo) {
+	public Account(String username, Long accountNo) {
 		super();
-		this.accountName = accountName;
+		this.username = username;
 		this.accountNo = accountNo;
 	}
 
-	public String getAccountName() {
-		return accountName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setAccountName(String accountName) {
-		this.accountName = accountName;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public Long getAccountNo() {
