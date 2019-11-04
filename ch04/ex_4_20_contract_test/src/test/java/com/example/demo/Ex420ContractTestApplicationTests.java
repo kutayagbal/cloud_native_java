@@ -23,7 +23,7 @@ public class Ex420ContractTestApplicationTests {
 	public void contractTest() throws Exception {
 		ConsumerUser u = userServiceClient.callUserService();
 
-		assertThat(u.getId()).isPositive();
+		assertThat(u.getId()).isGreaterThanOrEqualTo(0);
 		assertThat(u.getUsername()).matches("[A-Za-z0-9]+");
 		assertThat(u.getFirstName()).matches("[A-Za-z]+");
 		assertThat(u.getLastName()).matches("[A-Za-z]+");
