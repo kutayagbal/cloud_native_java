@@ -28,7 +28,7 @@ public class UserControllerTest {
 	@MockBean
 	private AuthService authService;
 
-	private String jsonContent = "{\"username\":\"test_user\",\"password\":\"test_pass\",\"email\":\"test@test_mail.com\"}";
+	private String jsonContent = "{\"username\":\"test_user\",\"firstName\":\"test_name\",\"lastName\":\"test_surname\",\"email\":\"test@test_mail.com\"}";
 
 	@Test
 	public void getUserShouldReturnUser() throws Exception {
@@ -37,7 +37,7 @@ public class UserControllerTest {
 		BDDMockito.given(authService.getAuthenticatedUser(principal)).willReturn(principal);
 
 		BDDMockito.given(userService.getUserByPrincipal(principal))
-				.willReturn(new User("test_user", "test_pass", "test@test_mail.com"));
+				.willReturn(new User("test_user", "test_name", "test_surname", "test@test_mail.com"));
 
 		this.mvc.perform(MockMvcRequestBuilders.get("/user/getuser").principal(principal))
 				.andExpect(MockMvcResultMatchers.status().isOk())

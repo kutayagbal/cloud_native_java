@@ -14,7 +14,8 @@ org.springframework.cloud.contract.spec.Contract.make{
 		body([
 			id			:	value(producer(regex('[0-9]+'))),
 			username	:	value(producer(regex('[A-Za-z0-9]+'))),
-			password	:	value(producer(regex('[A-Za-z0-9]+'))),
+			firstName	:	value(producer(regex('[A-Za-z]+'))),
+			lastName	:	value(producer(regex('[A-Za-z]+'))),
 			email		:	value(producer(regex('[A-Za-z0-9]+\\@[A-Za-z0-9]+\\.[A-Za-z]+')))
 			])
 		headers{

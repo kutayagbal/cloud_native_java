@@ -28,15 +28,16 @@ public class UserServiceTest {
 	@Test
 	public void getUserShouldReturnUser() {
 		Principal principal = mock(Principal.class);
-		
+
 		BDDMockito.given(userRepo.findUserByUsername(principal.getName()))
-				.willReturn(new User("test_user", "test_pass", "test@test_mail.com"));
-		
+				.willReturn(new User("test_user", "test_name", "test_surname", "test@test_mail.com"));
+
 		User user = userService.getUserByPrincipal(principal);
-		
+
 		assertThat(user).isNotNull();
 		assertThat(user.getUsername()).isEqualTo("test_user");
-		assertThat(user.getPassword()).isEqualTo("test_pass");
+		assertThat(user.getFirstName()).isEqualTo("test_name");
+		assertThat(user.getLastName()).isEqualTo("test_surname");
 		assertThat(user.getEmail()).isEqualTo("test@test_mail.com");
 	}
 
