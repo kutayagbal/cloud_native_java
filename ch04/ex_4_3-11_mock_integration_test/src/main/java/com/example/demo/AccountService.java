@@ -28,4 +28,8 @@ public class AccountService {
 		return Optional.ofNullable(userService.getAuthenticatedUser())
 				.map(u -> accRepo.findAccountsByUsername(u.getName())).orElse(Collections.emptyList());
 	}
+
+	public void createAccount(Account acc) {
+		accRepo.save(acc);
+	}
 }

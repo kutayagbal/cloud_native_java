@@ -14,11 +14,11 @@ public class Account {
 	private String username;
 	private Long accountNo;
 
-	public Account(String username, Long accountNo) {
-		super();
-		this.username = username;
-		this.accountNo = accountNo;
-	}
+//	public Account(String username, Long accountNo) {
+//		super();
+//		this.username = username;
+//		this.accountNo = accountNo;
+//	}
 
 	public String getUsername() {
 		return username;

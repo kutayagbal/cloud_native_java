@@ -31,7 +31,10 @@ public class AccountServiceTest {
 
 	@Test
 	public void getUserAccountReturnsSingleAccount() throws Exception {
-		given(accountRepository.findById(12345L)).willReturn(Optional.of((new Account("new_acc", 12345L))));
+		Account acc = new Account();
+		acc.setAccountNo(12345L);
+		acc.setUsername("new_acc");
+		given(accountRepository.findById(12345L)).willReturn(Optional.of((acc)));
 
 		given(userService.getAuthenticatedUser()).willReturn(new User(0L, "John Doe", 12345L));
 
@@ -41,10 +44,14 @@ public class AccountServiceTest {
 		assertThat(actual.get().getUsername()).isEqualTo("new_acc");
 		assertThat(actual.get().getAccountNo()).isEqualTo(12345L);
 	}
-	
+
 	@Test
 	public void getUserAccountsReturnsSingleAccount() throws Exception {
-		given(accountRepository.findAccountsByUsername("John")).willReturn(Collections.singletonList(new Account("user", 12345L)));
+		Account acc = new Account();
+		acc.setAccountNo(12345L);
+		acc.setUsername("user");
+
+		given(accountRepository.findAccountsByUsername("John")).willReturn(Collections.singletonList(acc));
 
 		given(userService.getAuthenticatedUser()).willReturn(new User(0L, "John", null));
 

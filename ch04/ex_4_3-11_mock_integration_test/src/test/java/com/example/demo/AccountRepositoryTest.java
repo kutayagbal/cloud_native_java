@@ -24,7 +24,10 @@ public class AccountRepositoryTest {
 
 	@Test
 	public void findUserAccountsShouldReturnAccounts() throws Exception {
-		this.entityManager.persist(new Account("Jack", 654321L));
+		Account acc = new Account();
+		acc.setAccountNo(654321L);
+		acc.setUsername("Jack");
+		this.entityManager.persist(acc);
 
 		List<Account> accounts = this.accountRepository.findAccountsByUsername("Jack");
 
@@ -38,7 +41,10 @@ public class AccountRepositoryTest {
 
 	@Test
 	public void findAccountShouldReturnAccount() {
-		this.entityManager.persist(new Account("jill", ACCOUNT_NO));
+		Account acc = new Account();
+		acc.setAccountNo(ACCOUNT_NO);
+		acc.setUsername("jill");
+		this.entityManager.persist(acc);
 
 		Account account = this.accountRepository.findAccountsByAccountNo(ACCOUNT_NO);
 
@@ -49,7 +55,10 @@ public class AccountRepositoryTest {
 
 	@Test
 	public void findAccountShouldReturnNull() throws Exception {
-		this.entityManager.persist(new Account("jack", ACCOUNT_NO));
+		Account acc = new Account();
+		acc.setAccountNo(ACCOUNT_NO);
+		acc.setUsername("jack");
+		this.entityManager.persist(acc);
 
 		Account account = this.accountRepository.findAccountsByAccountNo(12653761L);
 		assertThat(account).isNull();

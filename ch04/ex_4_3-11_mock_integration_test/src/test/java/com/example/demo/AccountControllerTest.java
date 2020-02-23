@@ -28,10 +28,14 @@ public class AccountControllerTest {
 
 	@Test
 	public void getUserAccountShouldReturnAccount() throws Exception {
-		String content = "{\"accountName\":\"userAcc\",\"accountNo\":12345678}";
+		String content = "{\"username\":\"userAcc\",\"accountNo\":12345678}";
 
+		Account acc = new Account();
+		acc.setAccountNo(12345678L);
+		acc.setUsername("userAcc");
+		
 		BDDMockito.given(this.accountService.getUserAccount())
-				.willReturn(Optional.of(new Account("userAcc", 12345678L)));
+				.willReturn(Optional.of(acc));
 
 		this.mvc.perform(get("/user_account").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(MockMvcResultMatchers.content().json(content));
